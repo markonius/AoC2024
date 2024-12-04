@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"group": "build",
+			"command": "gradle build",
+			"label": "gradle build",
+		}
+	]
+}
