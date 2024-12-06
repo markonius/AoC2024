@@ -1,5 +1,3 @@
-import java.io.File
-
 object Day6 {
 	val name = "Guard Gallivant"
 
