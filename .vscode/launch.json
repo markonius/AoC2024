@@ -10,7 +10,7 @@
 			"name": "Kotlin Launch",
 			"projectRoot": "${workspaceFolder}",
 			"mainClass": "markonius.aoc2024.AppKt",
-			"preLaunchTask": "gradle build"
+			"preLaunchTask": "gradle build",
 		},
 	]
 }

@@ -1,6 +1,6 @@
 package markonius.aoc2024
 
 fun main() {
-   val result = Day5.two()
+   val result = Day6.one()
    println(result)
 }
