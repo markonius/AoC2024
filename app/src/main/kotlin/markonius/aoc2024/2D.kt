@@ -1,11 +1,13 @@
-class Board(day: Int, defaultChar: Char = ' ') {
+class Board(input: String, defaultChar: Char = ' ') {
 	val lines: List<MutableList<Char>>
 	val defaultChar = defaultChar
 	val width: Int
 	val height: Int
 
+	constructor(day: Int, defaultChar: Char = ' ') : this(getInput(day), defaultChar)
+
 	init {
-		lines = getInput(day).lines().map { l -> l.toMutableList() }.reversed()
+		lines = input.lines().map { l -> l.toMutableList() }.reversed()
 		width = lines[0].size
 		height = lines.size
 	}
@@ -31,14 +33,29 @@ class Board(day: Int, defaultChar: Char = ' ') {
 	fun isInBounds(x: Int, y: Int): Boolean = x >= 0 && x < width && y >= 0 && y < height
 
 	fun isInBounds(position: Vector2): Boolean = isInBounds(position.x, position.y)
+
+	override fun toString(): String {
+		return lines.reversed().map { l ->
+			String(l.toCharArray())
+		}.joinToString("\n")
+	}
 }
 
-class Vector2(val x: Int, val y: Int) {
+data class Vector2(val x: Int, val y: Int) {
 	operator fun plus(other: Vector2): Vector2 =
 		Vector2(x + other.x, y + other.y)
 
-	override fun equals(other: Any?): Boolean =
-		other is Vector2 && other.x == x && other.y == y
+	operator fun minus(other: Vector2): Vector2 =
+		Vector2(x - other.x, y - other.y)
+
+	operator fun times(n: Int) =
+		Vector2(x * n, y * n)
+
+	operator fun div(n: Int) =
+		Vector2(x / n, y / n)
+
+	operator fun unaryMinus() =
+		Vector2(-x, -y)
 
 	fun rotateClockwise(): Vector2 = Vector2(y, -x)
 
