@@ -1,4 +1,6 @@
-class Board(input: String, defaultChar: Char = ' ') {
+class Board(input: String, defaultChar: Char = ' ')
+	: Iterable<Pair<Vector2, Char>> {
+
 	val lines: List<MutableList<Char>>
 	val defaultChar = defaultChar
 	val width: Int
@@ -38,6 +40,17 @@ class Board(input: String, defaultChar: Char = ' ') {
 		return lines.reversed().map { l ->
 			String(l.toCharArray())
 		}.joinToString("\n")
+	}
+
+ 	override fun iterator(): Iterator<Pair<Vector2, Char>> {
+		val self = this
+		return sequence {
+			for (y in 0..<height) {
+				for (x in 0..<width) {
+					yield(Vector2(x, y) to self[x, y])
+				}
+			}
+		}.iterator()
 	}
 }
 
