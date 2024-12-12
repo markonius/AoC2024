@@ -18,3 +18,17 @@ fun greatestCommonDivisor(a: Int, b: Int): Int {
 	}
 	return a1
 }
+
+fun isPowerOfTwo(n: Long): Boolean {
+	var m = n
+	while (m != 0L) {
+		if (m and 1 == 1L) {
+			return if (m == 1L)
+				true
+			else
+				false
+		}
+		m = m shr 1
+	}
+	return false
+}
