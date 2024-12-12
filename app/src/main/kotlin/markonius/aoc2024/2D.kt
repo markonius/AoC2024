@@ -36,6 +36,28 @@ class Board(input: String, defaultChar: Char = ' ')
 
 	fun isInBounds(position: Vector2): Boolean = isInBounds(position.x, position.y)
 
+	fun floodFill(position: Vector2): Sequence<Vector2> = floodFillStep(position, HashSet())
+
+	private fun floodFillStep(position: Vector2, visited: HashSet<Vector2>): Sequence<Vector2> {
+		if (visited.contains(position))
+			return emptySequence()
+
+		val self = this
+		visited.add(position)
+		return sequence {
+			yield(position)
+			val char = self[position]
+			if (self[position + Vector2.up] == char)
+				yieldAll(floodFillStep(position + Vector2.up, visited))
+			if (self[position + Vector2.right] == char)
+				yieldAll(floodFillStep(position + Vector2.right, visited))
+			if (self[position + Vector2.down] == char)
+				yieldAll(floodFillStep(position + Vector2.down, visited))
+			if (self[position + Vector2.left] == char)
+				yieldAll(floodFillStep(position + Vector2.left, visited))
+		}
+	}
+
 	override fun toString(): String {
 		return lines.reversed().map { l ->
 			String(l.toCharArray())
