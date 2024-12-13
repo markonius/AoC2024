@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day5 {
    val name = "Print Queue"
 

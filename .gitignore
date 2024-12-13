@@ -8,3 +8,7 @@ build
 
 # Personal inputs
 Day*.txt
+
+# IntelliJ
+.idea
+.kotlin

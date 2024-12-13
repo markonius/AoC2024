@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day1 {
    val name = "Historian Hysteria"
 

@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day6 {
 	val name = "Guard Gallivant"
 

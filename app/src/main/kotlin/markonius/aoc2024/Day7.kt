@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day7 {
 	val name = "Bridge Repair"
 

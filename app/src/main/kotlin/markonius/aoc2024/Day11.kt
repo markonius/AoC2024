@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day11 {
 	val name = "Plutonian Pebbles"
 

@@ -1,4 +1,4 @@
-import java.util.LinkedList
+package markonius.aoc2024
 
 object Day9 {
 	val name = "Disk Fragmenter"
@@ -88,7 +88,7 @@ object Day9 {
 		fileSystem.append(Block(null, 0))
 		fileSystem.dropFirst()
 
-		fun findNextEmpty(from: Block, until: Block ): Block? {
+		fun findNextEmpty(from: Block, until: Block): Block? {
 			var next: Block? = from
 			do {
 				next = next?.next

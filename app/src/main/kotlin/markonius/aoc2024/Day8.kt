@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day8 {
 	val name = "Resonant Collinearity"
 

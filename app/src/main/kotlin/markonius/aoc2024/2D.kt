@@ -1,5 +1,9 @@
-class Board(input: String, defaultChar: Char = ' ')
-	: Iterable<Pair<Vector2, Char>> {
+package markonius.aoc2024
+
+import kotlin.math.atan2
+import kotlin.math.sqrt
+
+class Board(input: String, defaultChar: Char = ' ') : Iterable<Pair<Vector2, Char>> {
 
 	val lines: List<MutableList<Char>>
 	val defaultChar = defaultChar
@@ -32,7 +36,7 @@ class Board(input: String, defaultChar: Char = ' ')
 
 	operator fun set(position: Vector2, value: Char): Boolean = set(position.x, position.y, value)
 
-	fun isInBounds(x: Int, y: Int): Boolean = x >= 0 && x < width && y >= 0 && y < height
+	fun isInBounds(x: Int, y: Int): Boolean = x in 0..<width && y in 0..<height
 
 	fun isInBounds(position: Vector2): Boolean = isInBounds(position.x, position.y)
 
@@ -64,7 +68,7 @@ class Board(input: String, defaultChar: Char = ' ')
 		}.joinToString("\n")
 	}
 
- 	override fun iterator(): Iterator<Pair<Vector2, Char>> {
+	override fun iterator(): Iterator<Pair<Vector2, Char>> {
 		val self = this
 		return sequence {
 			for (y in 0..<height) {
@@ -77,6 +81,9 @@ class Board(input: String, defaultChar: Char = ' ')
 }
 
 data class Vector2(val x: Int, val y: Int) {
+	val length: Double get() = sqrt((x * x + y * y).toDouble())
+	val angle: Double get() = atan2(y.toDouble(), x.toDouble())
+
 	operator fun plus(other: Vector2): Vector2 =
 		Vector2(x + other.x, y + other.y)
 
@@ -99,5 +106,34 @@ data class Vector2(val x: Int, val y: Int) {
 		val right = Vector2(1, 0)
 		val down = Vector2(0, -1)
 		val left = Vector2(-1, 0)
+	}
+}
+
+data class Vector2L(val x: Long, val y: Long) {
+	val length: Double get() = sqrt((x.toDouble() * x.toDouble() + y.toDouble() * y.toDouble()))
+	val angle: Double get() = atan2(y.toDouble(), x.toDouble())
+
+	operator fun plus(other: Vector2L): Vector2L =
+		Vector2L(x + other.x, y + other.y)
+
+	operator fun minus(other: Vector2L): Vector2L =
+		Vector2L(x - other.x, y - other.y)
+
+	operator fun times(n: Long) =
+		Vector2L(x * n, y * n)
+
+	operator fun div(n: Long) =
+		Vector2L(x / n, y / n)
+
+	operator fun unaryMinus() =
+		Vector2L(-x, -y)
+
+	fun rotateClockwise(): Vector2L = Vector2L(y, -x)
+
+	companion object {
+		val up = Vector2L(0, 1)
+		val right = Vector2L(1, 0)
+		val down = Vector2L(0, -1)
+		val left = Vector2L(-1, 0)
 	}
 }

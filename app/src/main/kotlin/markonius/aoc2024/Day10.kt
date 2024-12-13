@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day10 {
 	val name = "Hoof It"
 

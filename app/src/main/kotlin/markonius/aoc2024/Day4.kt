@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day4 {
    val name = "Ceres Search"
 

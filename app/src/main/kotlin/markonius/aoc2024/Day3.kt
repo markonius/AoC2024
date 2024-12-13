@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day3 {
    val name = "Mull It Over"
 

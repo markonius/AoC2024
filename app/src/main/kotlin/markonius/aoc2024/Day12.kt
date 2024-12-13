@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day12 {
 	val name = "Garden Groups"
 
@@ -45,7 +47,7 @@ object Day12 {
 
 	fun two(): String {
 		val board = Board(12)
-		// val board = Board(testInput)
+		// val board = markonius.aoc2024.Board(testInput)
 
 		fun calculateCost(position: Vector2): Int {
 			val plots = board.floodFill(position).toList()

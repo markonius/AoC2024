@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 class Node<T>(var value: T, var previous: Node<T>? = null, var next: Node<T>? = null)
 
 class LinkedList<T>(initial: Node<T>): Iterable<T> {

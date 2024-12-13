@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 fun parseNumbers(input: String): List<List<Int>> {
    return input.lines().map { l -> l.split(' ').map { it.toInt() } }
 }
@@ -5,7 +7,7 @@ fun parseNumbers(input: String): List<List<Int>> {
 object __dummy {}
 
 fun getInput(day: Int): String {
-   return __dummy.javaClass.getResource("Day${day}.txt")!!.readText().trim()
+   return __dummy.javaClass.getResource("/Day${day}.txt")!!.readText().trim()
 }
 
 fun greatestCommonDivisor(a: Int, b: Int): Int {

@@ -1,3 +1,5 @@
+package markonius.aoc2024
+
 object Day2 {
    val name = "Red-Nosed Reports"
 
