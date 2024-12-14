@@ -10,6 +10,12 @@ fun getInput(day: Int): String {
    return __dummy.javaClass.getResource("/Day${day}.txt")!!.readText().trim()
 }
 
+fun readAllInts(string: String): List<Int> {
+	val regex = """-?\d+""".toRegex()
+	val matches = regex.findAll(string)
+	return matches.map { it.value.toInt() }.toList()
+}
+
 fun greatestCommonDivisor(a: Int, b: Int): Int {
 	var a1 = a
 	var b1 = b
