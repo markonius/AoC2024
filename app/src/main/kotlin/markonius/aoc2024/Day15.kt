@@ -1,7 +1,5 @@
 package markonius.aoc2024
 
-import java.awt.geom.Point2D
-
 object Day15 {
 	val name = "Warehouse Woes"
 
