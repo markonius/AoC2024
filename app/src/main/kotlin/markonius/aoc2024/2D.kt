@@ -4,16 +4,17 @@ import kotlin.math.atan2
 import kotlin.math.sqrt
 
 class Board(input: String, defaultChar: Char = ' ') : Iterable<Pair<Vector2, Char>> {
+	constructor(day: Int, defaultChar: Char = ' ') : this(getInput(day), defaultChar)
 
-	val lines: List<MutableList<Char>>
-	val defaultChar = defaultChar
+	private val lines: List<MutableList<Char>>
+
+	val defaultChar: Char
 	val width: Int
 	val height: Int
 
-	constructor(day: Int, defaultChar: Char = ' ') : this(getInput(day), defaultChar)
-
 	init {
 		lines = input.lines().map { l -> l.toMutableList() }.reversed()
+		this.defaultChar = defaultChar
 		width = lines[0].size
 		height = lines.size
 	}
@@ -102,6 +103,7 @@ data class Vector2(val x: Int, val y: Int) {
 	fun rotateClockwise(): Vector2 = Vector2(y, -x)
 
 	companion object {
+		val zero = Vector2(0, 0)
 		val up = Vector2(0, 1)
 		val right = Vector2(1, 0)
 		val down = Vector2(0, -1)
@@ -131,6 +133,7 @@ data class Vector2L(val x: Long, val y: Long) {
 	fun rotateClockwise(): Vector2L = Vector2L(y, -x)
 
 	companion object {
+		val zero = Vector2L(0, 0)
 		val up = Vector2L(0, 1)
 		val right = Vector2L(1, 0)
 		val down = Vector2L(0, -1)

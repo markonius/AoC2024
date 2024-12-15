@@ -40,3 +40,5 @@ fun isPowerOfTwo(n: Long): Boolean {
 	}
 	return false
 }
+
+val PANIC: Nothing get() = throw Exception("Unrecoverable programming error.")
