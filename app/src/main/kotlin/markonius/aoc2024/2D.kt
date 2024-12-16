@@ -102,6 +102,8 @@ data class Vector2(val x: Int, val y: Int) {
 
 	fun rotateClockwise(): Vector2 = Vector2(y, -x)
 
+	fun rotateCounterClockwise(): Vector2 = Vector2(-y, x)
+
 	companion object {
 		val zero = Vector2(0, 0)
 		val up = Vector2(0, 1)
